@@ -128,3 +128,13 @@ Farm.findOne({ name: "マザー牧場" })
   __v: 1
 }
 ```
+
+## 一対超たくさん
+数千とかだと子のドキュメントに保存するほうが効率的
+親への参照をこのドキュメントに保存するほうが効率的
+```js
+{
+  tweetText: "hello world",
+  tags: ["stupid","moron","hi"],
+  user: ObjectiD("131631131") //* これが親の参照
+}
