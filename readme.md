@@ -1,6 +1,6 @@
 # 一対数個のとき　
 ドキュメントにデータを丸ごと入れてしまう(少ないからね)
-```json
+```js
 {
   name: "tom",
   savedAddress: [
@@ -11,7 +11,7 @@
 ```
 ネストしたオブジェクトがあったら勝手にそこにもidつけてくれる
 
-```json
+```js
 {
   first: 'taro',
   last: '山田',
@@ -30,7 +30,7 @@
 ```
 
 
-```json
+```js
 addresses: [
     {
       _id: {id: false}, //* これを書くとネストしたオブジェクトにidがつかなくなる
@@ -43,12 +43,12 @@ addresses: [
   ```
   この上の方法は$ npm i mongoose@5だけだった
   6はこっち
-  ```json
+  ```js
   _id: false,
   ```
   # 一対たくさんの時
   データを別々のコレクションに保存してドキュメントidを親のどこかに保存する
-  ```json
+  ```js
   {
     farmName: "full belly farms",
     location: "Guinda, CA",
@@ -60,7 +60,7 @@ addresses: [
   }
 ```
 これのやり方
-```json
+```js
  product: [
       ObjectID:("21938103810381"),
       ObjectID:("436457567677687"),
