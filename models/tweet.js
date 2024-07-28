@@ -22,11 +22,28 @@ const tweetSchema = new Schema({
 const User = mongoose.model("User", userSchema)
 const Tweet = mongoose.model("Tweet", tweetSchema)
 
-const makeTweet = async () => {
-  const user = await new User({ name: "山田", age: 61 })
-  const tweet1 = await new Tweet({ text: "今日は晴れてて気分がいい", likes: 0 })
-  tweet1.user = user //* これでうまくいく
-  tweet1.save()
-  user.save()
+// const makeTweet = async () => {
+//   // const user = await new User({ username: "山田", age: 61 })
+//   const user = await User.findOne({ username: "山田" })
+//   // const tweet1 = await new Tweet({ text: "今日は晴れてて気分がいい", likes: 0 })
+//   const tweet2 = await new Tweet({ text: "ほげほげもげもげ", likes: 100 })
+//   tweet2.user = user //* これでうまくいく
+//   tweet2.save()
+//   // user.save()
+// }
+
+// makeTweet()
+
+const findTweet = async () => {
+  const tweet = await Tweet.findOne({})
+  console.log(tweet)
 }
-makeTweet()
+
+findTweet()
+// {
+//   _id: 66a65bfed3922142a871de00,
+//   text: '今日は晴れてて気分がいい',
+//   likes: 0,
+//   user: 66a65bfed3922142a871ddff,
+//   __v: 0
+// }
