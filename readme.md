@@ -41,3 +41,9 @@ addresses: [
     },
   ],
   ```
+  この上の方法は$ npm i mongoose@5だけだった
+  6はこっち
+  ```json
+  _id: false,
+  ```
+

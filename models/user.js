@@ -33,15 +33,27 @@ const makeUser = async () => {
   u.addresses.push({
     country: "japan",
     prefecture: "千葉",
-   address1: "千葉市",
-   address2: "0-0-0"
+    address1: "千葉市",
+    address2: "0-0-0",
   })
   const result = await u.save()
   console.log(result)
 }
 
-makeUser()
+const addAddress = async (id) => {
+  const user = await User.findById(id)
+  user.addresses.push({
+    country: "japan",
+    prefecture: "愛知県",
+    address1: "千葉市",
+    address2: "0-0-0",
+  })
+  const result = await user.save()
+  console.log(result)
+}
 
+// makeUser()
+addAddress("66a63855ed3aacd30475105d")
 // {
 //   first: 'taro',
 //   last: '山田',
