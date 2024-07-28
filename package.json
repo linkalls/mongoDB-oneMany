@@ -1,0 +1,15 @@
+{
+  "name": "mongodb-onemany",
+  "version": "1.0.0",
+  "description": "ドキュメントにデータを丸ごと入れてしまう(少ないからね)\r ```json\r {\r   name: \"tom\",\r   savedAddress: [\r     { street: \"hoge 5\", city: \"hiroshima\",country:\"japan\" },\r     { street: \"moge 5\", city: \"hiroshima\",country:\"japan\" },\r   ]\r }\r ```",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^8.5.1"
+  }
+}
