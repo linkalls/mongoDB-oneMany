@@ -88,3 +88,43 @@ db側ではこのように保存される
     __v: 0
   }
 ```
+```js
+Farm.findOne({ name: "マザー牧場" }).then((farm) => console.log(farm))
+
+{
+  products: [ 66a63d5bdbb7ae2a287a121e, 66a63d5bdbb7ae2a287a121e ], //* idじゃなくて中身もとれるようにできるよ
+  _id: 66a64047c0f4a72dec5c1e19,
+  name: 'マザー牧場',
+  city: '千葉市',
+  __v: 1
+}
+```
+```js
+Farm.findOne({ name: "マザー牧場" })
+.populate("products") //* productsっていうプロパティをpopulate
+.then((farm) => console.log(farm))
+
+
+{
+  products: [
+    {
+      _id: 66a63d5bdbb7ae2a287a121e,
+      name: 'メロン',
+      price: 3000,
+      season: 'winter',
+      __v: 0
+    },
+    {
+      _id: 66a63d5bdbb7ae2a287a121e,
+      name: 'メロン',
+      price: 3000,
+      season: 'winter',
+      __v: 0
+    }
+  ],
+  _id: 66a64047c0f4a72dec5c1e19,
+  name: 'マザー牧場',
+  city: '千葉市',
+  __v: 1
+}
+```

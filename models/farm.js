@@ -40,7 +40,7 @@ const makeFarm = async () => {
   const melon = await Product.findOne({ name: "メロン" })
   farm.products.push(melon)
   console.log(farm)
- await farm.save()
+  await farm.save()
 }
 
 // {
@@ -58,7 +58,6 @@ const makeFarm = async () => {
 //   city: '千葉市'
 // }
 
-
 // makeFarm()
 
 // {
@@ -69,9 +68,9 @@ const makeFarm = async () => {
 //   __v: 0
 // }
 
-const addProduct = async ()=>{
-  const farm = await Farm.findOne({name:"マザー牧場"})
-  const watermelon = await Product.findOne({name:  "メロン"})
+const addProduct = async () => {
+  const farm = await Farm.findOne({ name: "マザー牧場" })
+  const watermelon = await Product.findOne({ name: "メロン" })
   console.log(watermelon)
   farm.products.push(watermelon)
   await farm.save()
@@ -86,4 +85,41 @@ const addProduct = async ()=>{
 //   __v: 1
 // }
 
-addProduct()
+// {
+//   products: [ 66a63d5bdbb7ae2a287a121e, 66a63d5bdbb7ae2a287a121e ], //* idじゃなくて中身もとれるようにできるよ
+//   _id: 66a64047c0f4a72dec5c1e19,
+//   name: 'マザー牧場',
+//   city: '千葉市',
+//   __v: 1
+// }
+
+// addProduct()
+Farm.findOne({ name: "マザー牧場" })
+.populate("products") //* productsっていうプロパティをpopulate
+.then((farm) => console.log(farm))
+
+// {
+//   products: [
+//     {
+//       _id: 66a63d5bdbb7ae2a287a121e,
+//       name: 'メロン',
+//       price: 3000,
+//       season: 'winter',
+//       __v: 0
+//     },
+//     {
+//       _id: 66a63d5bdbb7ae2a287a121e,
+//       name: 'メロン',
+//       price: 3000,
+//       season: 'winter',
+//       __v: 0
+//     }
+//   ],
+//   _id: 66a64047c0f4a72dec5c1e19,
+//   name: 'マザー牧場',
+//   city: '千葉市',
+//   __v: 1
+// }
+
+
+
