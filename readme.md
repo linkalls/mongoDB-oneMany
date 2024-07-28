@@ -46,4 +46,45 @@ addresses: [
   ```json
   _id: false,
   ```
+  # 一対たくさんの時
+  データを別々のコレクションに保存してドキュメントidを親のどこかに保存する
+  ```json
+  {
+    farmName: "full belly farms",
+    location: "Guinda, CA",
+    product: [
+      ObjectID:("21938103810381"),
+      ObjectID:("436457567677687"),
+      ObjectID:("099687456465646"),
+    ]
+  }
+```
+これのやり方
+```json
+ product: [
+      ObjectID:("21938103810381"),
+      ObjectID:("436457567677687"),
+      ObjectID:("099687456465646"),
+    ]
+```
+```js
+const { Schema } = mongoose
+const farmSchema = new mongoose.Schema({
+  name: String,
+  city: String,
+  products: [{ type: Schema.Types.ObjectId, ref: "Product" }],
+})
+```
+**ref: "Product"** っていうところでProductモデルと紐づいてると伝える
+db側ではこのように保存される
 
+
+```js
+{
+    _id: ObjectId('66a64047c0f4a72dec5c1e19'),
+    products: [ ObjectId('66a63d5bdbb7ae2a287a121e') ],
+    name: 'マザー牧場',
+    city: '千葉市',
+    __v: 0
+  }
+```
