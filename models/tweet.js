@@ -35,7 +35,7 @@ const Tweet = mongoose.model("Tweet", tweetSchema)
 // makeTweet()
 
 const findTweet = async () => {
-  const tweet = await Tweet.findOne({}).populate("user")
+  const tweet = await Tweet.findOne({}).populate("user","username")
   console.log(tweet)
 }
 
