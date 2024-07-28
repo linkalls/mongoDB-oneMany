@@ -35,15 +35,16 @@ const Tweet = mongoose.model("Tweet", tweetSchema)
 // makeTweet()
 
 const findTweet = async () => {
-  const tweet = await Tweet.findOne({})
+  const tweet = await Tweet.findOne({}).populate("user")
   console.log(tweet)
 }
 
 findTweet()
+
 // {
 //   _id: 66a65bfed3922142a871de00,
 //   text: '今日は晴れてて気分がいい',
 //   likes: 0,
-//   user: 66a65bfed3922142a871ddff,
+//   user: { _id: 66a65bfed3922142a871ddff, username: '山田', age: 61, __v: 0 }, //* idじゃなくてしっかりとオブジェクトが返ってくる
 //   __v: 0
 // }
